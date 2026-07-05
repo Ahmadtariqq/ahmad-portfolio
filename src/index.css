@@ -1,21 +1,208 @@
+/* ─── Google Fonts ────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #0a0a0a;
+/* ─── Theme Variables ─────────────────────────────────────── */
+:root, [data-theme="dark"] {
+  --bg-base:        #10101a;        /* slightly less pitch-black */
+  --bg-sidebar:     rgba(14,14,22,0.94);
+  --bg-glass:       rgba(255,255,255,0.04);
+  --bg-glass-h:     rgba(255,255,255,0.07);
+  --bg-input:       rgba(12,12,20,0.7);
+  --border:         rgba(255,255,255,0.08);
+  --border-hover:   rgba(124,58,237,0.32);
+  --text-primary:   #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #94a3b8;
+  --text-faint:     #475569;
+  --blob1:          rgba(109,40,217,0.18);
+  --blob2:          rgba(14,165,233,0.12);
+  --blob3:          rgba(55,48,163,0.10);
+  --avatar-inner:   #1a1a2e;
+  --scrollbar-thumb:#2e2e45;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
-html {
-  scroll-behavior: smooth;
+[data-theme="light"] {
+  --bg-base:        #FAF8F4;   /* warm cream — matches cousin's portfolio */
+  --bg-sidebar:     #FAF8F4;   /* matches background */
+  --bg-glass:       rgba(255,255,255,0.85);
+  --bg-glass-h:     rgba(255,255,255,0.97);
+  --bg-input:       #F5F3EF;
+  --border:         rgba(0,0,0,0.08);
+  --border-hover:   rgba(245,158,11,0.4);
+  --text-primary:   #111827;
+  --text-secondary: #374151;
+  --text-muted:     #6B7280;
+  --text-faint:     #9CA3AF;
+  --blob1:          transparent;
+  --blob2:          transparent;
+  --blob3:          transparent;
+  --avatar-inner:   #FEF3C7;
+  --scrollbar-thumb:#D1D5DB;
 }
+
+/* ──────────────────────────────────────────────────────────────
+   Light-mode overrides for Tailwind hardcoded color classes
+   These ensure all component text looks correct in light mode
+   ────────────────────────────────────────────────────────────── */
+[data-theme="light"] .text-white      { color: #0f172a !important; }
+[data-theme="light"] .text-gray-100   { color: #1e293b !important; }
+[data-theme="light"] .text-gray-200   { color: #334155 !important; }
+[data-theme="light"] .text-gray-300   { color: #475569 !important; }
+[data-theme="light"] .text-gray-400   { color: #64748b !important; }
+[data-theme="light"] .text-gray-500   { color: #64748b !important; }
+[data-theme="light"] .text-gray-600   { color: #64748b !important; }
+[data-theme="light"] .bg-\[\#0d0d12\]  { background: #FAF8F4 !important; }
+[data-theme="light"] .bg-\[\#0c0c12\]  { background: #FFFFFF !important; }
+[data-theme="light"] .bg-\[\#050507\]  { background: #FAF8F4 !important; }
+[data-theme="light"] .bg-white\/5     { background: rgba(0,0,0,0.04) !important; }
+[data-theme="light"] .bg-white\/4     { background: rgba(0,0,0,0.03) !important; }
+[data-theme="light"] .bg-white\/3     { background: rgba(0,0,0,0.025) !important; }
+[data-theme="light"] .border-white\/5  { border-color: rgba(0,0,0,0.07) !important; }
+[data-theme="light"] .border-white\/8  { border-color: rgba(0,0,0,0.08) !important; }
+[data-theme="light"] .border-white\/10 { border-color: rgba(0,0,0,0.10) !important; }
+[data-theme="light"] input,
+[data-theme="light"] textarea          { background: var(--bg-input); color: var(--text-primary); }
+[data-theme="light"] .font-mono        { color: inherit; }
+
+/* ─── Design Tokens ───────────────────────────────────────── */
+@theme {
+  --font-sans:    "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono:    "Fira Code", monospace;
+}
+
+/* ─── Base ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; }
+code, kbd, pre  { font-family: "Fira Code", monospace; }
 
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Background blobs (GPU-composited CSS only) ──────────── */
+@keyframes blob1 {
+  0%,100% { transform: translate(0,0)   scale(1);    }
+  33%     { transform: translate(40px,-30px) scale(1.1);  }
+  66%     { transform: translate(-20px,40px) scale(0.95); }
+}
+@keyframes blob2 {
+  0%,100% { transform: translate(0,0)    scale(1);    }
+  33%     { transform: translate(-50px,50px) scale(0.9);  }
+  66%     { transform: translate(30px,-40px) scale(1.08); }
+}
+@keyframes blob3 {
+  0%,100% { transform: translate(0,0)   scale(1);    }
+  33%     { transform: translate(60px,40px) scale(1.05); }
+  66%     { transform: translate(-40px,-50px) scale(0.92); }
+}
+
+.blob { position:absolute; border-radius:50%; pointer-events:none; will-change:transform; }
+.blob-1 { width:44vw; height:44vw; top:-10%; left:-8%;  background:var(--blob1); filter:blur(100px); animation:blob1 32s ease-in-out infinite; }
+.blob-2 { width:36vw; height:36vw; top:38%; right:-6%;  background:var(--blob2); filter:blur(90px);  animation:blob2 40s ease-in-out infinite; }
+.blob-3 { width:50vw; height:50vw; bottom:-12%;left:14%; background:var(--blob3); filter:blur(110px); animation:blob3 48s ease-in-out infinite; }
+
+/* ─── Glass card ──────────────────────────────────────────── */
+.glass {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.glass-hover {
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.glass-hover:hover {
+  background: var(--bg-glass-h);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 40px -12px rgba(124,58,237,0.18);
+  transform: translateY(-2px);
+}
+
+/* ─── Sidebar active item gradient bar ────────────────────── */
+.nav-active {
+  background: linear-gradient(90deg, rgba(245,158,11,0.12) 0%, transparent 100%);
+  border-left: 2px solid #f59e0b;
+  color: var(--text-primary);
+}
+.nav-item {
+  transition: background 0.18s, color 0.18s;
+}
+.nav-item:hover { background: var(--bg-glass-h); color: var(--text-primary); }
+
+/* ─── Skill bubble ────────────────────────────────────────── */
+.skill-bubble {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.skill-bubble:hover { transform: scale(1.1); }
+
+/* ─── Typewriter cursor ───────────────────────────────────── */
+@keyframes blink { 50% { opacity:0; } }
+.cursor-blink { animation: blink 0.8s step-end infinite; }
+
+/* ─── Timeline fade-in ────────────────────────────────────── */
+@keyframes fadeSlideIn {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.fade-in { animation: fadeSlideIn 0.45s ease forwards; }
+
+/* ─── Bar chart ───────────────────────────────────────────── */
+.bar-fill {
+  transition: height 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── Spinning avatar border ──────────────────────────────── */
+@keyframes spin-border { to { transform:rotate(360deg); } }
+
+/* Avatar ring outer wrapper */
+.avatar-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: conic-gradient(from 0deg, #7c3aed, #06b6d4, #a855f7, #7c3aed);
+  animation: spin-border 4s linear infinite;
+  z-index: 0;
+  /* Clip to show only 3px border */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+}
+
+/* ─── Smart Talk typing dots ──────────────────────────────── */
+@keyframes dotBounce {
+  0%,80%,100% { transform: translateY(0); }
+  40%         { transform: translateY(-6px); }
+}
+.dot-1 { animation: dotBounce 1.2s 0.0s infinite; }
+.dot-2 { animation: dotBounce 1.2s 0.2s infinite; }
+.dot-3 { animation: dotBounce 1.2s 0.4s infinite; }
+
+/* ─── Category pill active ────────────────────────────────── */
+.pill-active {
+  background: rgba(124,58,237,0.15);
+  border-color: rgba(124,58,237,0.45);
+  color: #a78bfa;
+}
+
+/* ─── Status badge pulse ──────────────────────────────────── */
+@keyframes ping { 75%,100%{transform:scale(2);opacity:0;} }
+.ping { animation: ping 1.2s cubic-bezier(0,0,.2,1) infinite; }
