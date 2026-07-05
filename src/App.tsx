@@ -47,7 +47,7 @@ function Avatar() {
       >
         {!imgErr ? (
           <img
-            src="/avatar.jpg"
+            src={`${import.meta.env.BASE_URL}avatar.jpg`}
             alt="Ahmad Tariq"
             className="h-full w-full object-cover object-top"
             onError={() => setImgErr(true)}
