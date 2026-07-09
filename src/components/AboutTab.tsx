@@ -45,14 +45,14 @@ export default function AboutTab() {
       ]
     },
     {
-      title: "MERN Stack Developer",
-      company: "NextShines",
-      span: "Jun 2025 – Dec 2025",
+      title: "Full Stack Developer",
+      company: "Samos",
+      span: "Jun 2025 – Nov 2025",
       duration: "6mo",
-      type: "Internship",
-      location: "Lahore, Pakistan 🇵🇰",
+      type: "Full-time",
+      location: "Remote",
       current: false,
-      logoText: "NS",
+      logoText: "S",
       logoBg: "bg-blue-600 text-white",
       responsibilities: [
         "Integrated secure Express.js REST APIs with JSON Web Token (JWT) credentials.",
@@ -61,11 +61,11 @@ export default function AboutTab() {
       ]
     },
     {
-      title: "Junior MERN Developer",
+      title: "Full Stack Developer",
       company: "InventStarts",
-      span: "Oct 2024 – Jun 2025",
-      duration: "9mo",
-      type: "Internship",
+      span: "Oct 2024 – Jan 2025",
+      duration: "3mo",
+      type: "Full-time",
       location: "Lahore, Pakistan 🇵🇰",
       current: false,
       logoText: "IS",
@@ -79,9 +79,9 @@ export default function AboutTab() {
 
   const educations: Education[] = [
     {
-      degree: "BS Software Engineering",
+      degree: "Bachelor in Computer Science",
       school: "Virtual University of Pakistan",
-      span: "2024 – Present",
+      span: "",
       location: "Pakistan (Online)",
       current: true,
       logoText: "VU",
@@ -90,7 +90,7 @@ export default function AboutTab() {
     {
       degree: "Associate Engineering (Computer Information Technology)",
       school: "Government College of Technology",
-      span: "2021 – 2024",
+      span: "",
       location: "Lahore, Pakistan 🇵🇰",
       current: false,
       logoText: "GCT",

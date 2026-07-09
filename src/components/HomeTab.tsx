@@ -123,7 +123,7 @@ export default function HomeTab({ setActiveTab }: { setActiveTab: (t: string) =>
           </button>
 
           <a
-            href="https://drive.google.com/uc?export=download&id=1hBS861PyHUm-NWUxMO2L7FCrdn5zCSF6"
+            href="https://canva.link/fm58n6if7buiflk"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[var(--bg-glass)] border border-[var(--border)] hover:bg-[var(--bg-glass-h)] text-[var(--text-secondary)] text-xs font-semibold px-5 py-2.5 rounded-xl transition"
